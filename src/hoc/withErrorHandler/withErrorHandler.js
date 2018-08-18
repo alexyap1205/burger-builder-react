@@ -1,3 +1,5 @@
+// Global Error Handler using Higher Order Component
+
 import React, {Component} from 'react';
 
 import Modal from '../../components/UI/Modal/Modal';
