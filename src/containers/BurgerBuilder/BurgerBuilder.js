@@ -9,12 +9,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 import axiosInstance from '../../axios-instance';
 
-const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    bacon: 0.7
-};
+import INGREDIENT_PRICES from '../../components/Burger/IngredientPrices';
 
 class BurgerBuilder extends Component {
     state = {
@@ -90,28 +85,16 @@ class BurgerBuilder extends Component {
     };
 
     purchaseContinueHandler = () => {
-        this.setState({loading: true});
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Alex',
-                address: {
-                    street: 'Test Street',
-                    zipCode: '12345',
-                    country: 'Australia'
-                },
-                email: 'test@test.com'
-            },
-            deliveryMethod: 'fastest'
-        };
-        axiosInstance.post('/orders.json', order)
-            .then(response => {
-                this.setState({loading: false, purchasing: false })
-            })
-            .catch(error => {
-                this.setState({loading: false, purchasing: false })
-            });
+        const queryParams =[];
+        for (let i in this.state.ingredients) {
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+        }
+        const queryString = queryParams.join('&');
+
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString});
+
     };
 
     render() {
