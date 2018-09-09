@@ -7,7 +7,7 @@
 .Label {
     font-weight: bold;
     display: block;
-    margin: 8px;
+    margin-bottom: 8px;
 }
 
 .InputElement {
@@ -23,7 +23,7 @@
 
 .InputElement:focus {
     outline: none;
-    border-color: #ccc;
+    background-color: #ccc;
 }
 
 .Invalid {

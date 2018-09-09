@@ -15,13 +15,13 @@
     padding-left: 0;
 }
 
-.Success {
-    color: #5C9210;
-}
-
 .Button:disabled {
     color: #ccc;
     cursor: not-allowed;
+}
+
+.Success {
+    color: #5C9210;
 }
 
 .Danger {
